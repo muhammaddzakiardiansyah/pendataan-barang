@@ -15,7 +15,7 @@
                     <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
                     <label for="floatingPassword">Password</label>
                 </div>
-                <button class="btn btn-primary w-100 py-2" type="submit">Login</button>
+                <button class="btn btn-success w-100 py-2" type="submit">Login</button>
             </form>
         </main>
     </div>
