@@ -131,8 +131,8 @@
                     <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2 active {{ $active == 'Dashboard' ? '' : 'text-dark' }}"
-                                    aria-current="page" href="{{ url('/dashboard') }}">
+                                <a class="nav-link d-flex align-items-center gap-2 active text-dark" aria-current="page"
+                                    href="{{ url('/dashboard') }}">
                                     <svg class="bi">
                                         <use xlink:href="#house-fill" />
                                     </svg>
@@ -140,7 +140,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2 text-dark"
+                                <a class="nav-link d-flex align-items-center gap-2 {{ $active == 'Data Barang' ? '' : 'text-dark' }}"
                                     href="{{ url('/databarang') }}">
                                     <svg class="bi">
                                         <use xlink:href="#file-earmark" />
@@ -172,53 +172,79 @@
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Dashboard</h1>
+                    <h1 class="h2">Data Barang</h1>
                     <div class="dropdown user_login">
-                        <button class="btn btn-secondary dropdown-toggle btn-login" type="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <button class="btn btn-secondary dropdown-toggle btn-login" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                                <path fill-rule="evenodd"
-                                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                             </svg>
                             M Dzaki
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark">
                             <li><a class="dropdown-item" href="#"><svg class="bi">
-                                        <use xlink:href="#door-closed" />
-                                    </svg> Log Out</a></li>
+                                <use xlink:href="#door-closed" />
+                            </svg> Log Out</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="d-flex w-100 h-100 align-items-center">
                     <div class="container">
-                        <div class="row d-flex justify-content-center">
-                            <div class="col-md-3">
-                                <div class="card w-100 bg-success mt-2">
-                                    <div class="card-body">
-                                        <h1 class="card-title text-center text-white">6</h1>
-                                        <p class="card-text text-center text-white">Barang Dipinjam</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card w-100 bg-warning mt-2">
-                                    <div class="card-body">
-                                        <h1 class="card-title text-center text-white">3</h1>
-                                        <p class="card-text text-center text-white">Barang Tersedia</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="card w-100 bg-danger mt-2">
-                                    <div class="card-body">
-                                        <h1 class="card-title text-center text-white">2</h1>
-                                        <p class="card-text text-center text-white">Barang Rusak</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="input-group mb-3">
+                            <input type="search" class="form-control" placeholder="Cari Barang"
+                                aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-primary" type="submit" id="button-addon2"><i
+                                    class="bi bi-search"></i></button>
                         </div>
+                        <table class="table table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">No.</th>
+                                    <th scope="col">Nama Barang</th>
+                                    <th scope="col">Brand</th>
+                                    <th scope="col">Kondisi</th>
+                                    <th scope="col">Jumlah</th>
+                                    <th scope="col">Kelengkapan lainya</th>
+                                    <th scope="col">Detail</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                    <td>@mdo</td>
+                                    <td>@mdo</td>
+                                    <td>
+                                        <a href="#" class="badge text-bg-primary"><i class="bi bi-eye"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                    <td>@fat</td>
+                                    <td>@fat</td>
+                                    <td>
+                                        <a href="#" class="badge text-bg-primary"><i class="bi bi-eye"></i></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Larry the Bird</td>
+                                    <td>@twitter</td>
+                                    <td>@twitter</td>
+                                    <td>@twitter</td>
+                                    <td>@twitter</td>
+                                    <td>
+                                        <a href="#" class="badge text-bg-primary"><i class="bi bi-eye"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </main>
