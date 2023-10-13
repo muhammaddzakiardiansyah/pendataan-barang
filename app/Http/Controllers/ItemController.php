@@ -8,23 +8,11 @@ use Illuminate\Http\Request;
 class ItemController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $items = Items::all();
-        return view('dashboard/index', [
-            'items' => $items,
-            'active' => 'Dashboard'
-        ]);
-    }
-
-    /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('dashboard/tambahdatabarang', ['active' => 'Tambah Barang']);
     }
 
     /**
@@ -32,15 +20,16 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $input = $request->validate([
+            'item_name' => 'required',
+            'status' => 'required',
+            'condition' => 'required',
+            'jumlah' => 'required',
+            'other_equipment' => 'required'
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        Items::create($input);
+        return redirect('/databarang')->with('success', 'Barang berhasil disimpan');
     }
 
     /**
@@ -48,7 +37,8 @@ class ItemController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $item = Items::find($id);
+        return view('dashboard/editdatabarang', ['active' => 'Edit Data Barang'])->with('item', $item);
     }
 
     /**
@@ -56,7 +46,16 @@ class ItemController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $item = Items::find($id);
+        $input = $request->validate([
+            'item_name' => 'required',
+            'status' => 'required',
+            'condition' => 'required',
+            'jumlah' => 'required',
+            'other_equipment' => 'required'
+        ]);
+        $item->update($input);
+        return redirect('/detaildatabarang/'.$item->id)->with('success', 'Berhasil mengubah data barang');
     }
 
     /**
@@ -64,6 +63,8 @@ class ItemController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item = Items::find($id);
+        Items::destroy($item);
+        return redirect('/databarang')->with('success', 'Berhasil menghapus data barang');
     }
 }

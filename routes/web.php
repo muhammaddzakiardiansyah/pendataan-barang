@@ -18,7 +18,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', [DashboardController::class, 'dashboard']); //->middleware('auth');
 Route::get('/databarang', [DashboardController::class, 'databarang']);
+Route::get('/detaildatabarang/{id}', [DashboardController::class, 'detaildatabarang']);
+
 Route::get('/login', [LoginController::class, 'index']);  //->name('login')->middleware('guest');
+
+Route::get('/tambahdatabarang', [ItemController::class, 'create']);
+Route::post('/tambahdatabarang', [ItemController::class, 'store']);
+Route::get('/editdatabarang/{id}', [ItemController::class, 'edit']);
+Route::post('/editdatabarang/{id}', [ItemController::class, 'update']);
 
 // Route::get('/', function () {
 //     return view('welcome');

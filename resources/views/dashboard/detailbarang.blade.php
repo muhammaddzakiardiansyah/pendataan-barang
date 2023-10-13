@@ -1,5 +1,10 @@
 @extends('layouts/header')
+
 @section('container')
+
+    @if (session()->has('success'))
+        <script>successAdd(session('success'))</script>
+    @endif
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
             <path
@@ -139,7 +144,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2 {{ $active == 'Data Barang' ? '' : 'text-dark' }}"
+                                <a class="nav-link d-flex align-items-center gap-2 text-dark"
                                     href="{{ url('/databarang') }}">
                                     <svg class="bi">
                                         <use xlink:href="#file-earmark" />
@@ -171,7 +176,7 @@
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Data Barang</h1>
+                    <h1 class="h2">Detail Data Barang</h1>
                     <div class="dropdown user_login">
                         <button class="btn btn-secondary dropdown-toggle btn-login" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -190,7 +195,7 @@
                 </div>
                 <div class="d-flex w-100 h-100 align-items-center">
                     <div class="container">
-                        <div class="d-flex">
+                        {{-- <div class="d-flex">
                             <div class="input-group mb-3 btn-search">
                                 <input type="search" class="form-control" placeholder="Cari Barang"
                                     aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -200,7 +205,7 @@
                             <div class="btn-add">
                                 <a href="{{url('/tambahdatabarang')}}" class="btn btn-outline-primary">Tambah Barang</a>
                             </div>
-                        </div>
+                        </div> --}}
                         <table class="table table-hover">
                             <thead class="table-dark">
                                 <tr>
@@ -209,30 +214,28 @@
                                     <th scope="col">Status</th>
                                     <th scope="col">Kondisi</th>
                                     <th scope="col">Jumlah</th>
-                                    <th scope="col">Detail</th>
+                                    <th scope="col">Kelengkapan lainya</th>
+                                    <th scope="col">Alat</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (count($items) > 0)
-                                    @foreach ($items as $item)
-                                    <tr>
-                                        <th scope="row">{{$loop->iteration}}</th>
-                                        <td>{{$item->item_name}}</td>
-                                        <td>{{$item->status}}</td>
-                                        <td>{{$item->condition}}</td>
-                                        <td>{{$item->jumlah}}</td>
-                                        <td>
-                                            <a href="{{url('/detaildatabarang/'.$item->id)}}" class="badge text-bg-primary"><i class="bi bi-eye"></i></a>
-                                        </td>
-                                    </tr>  
-                                    @endforeach
-                                @else
-                                    <tr> 
-                                        <td colspan="7"><h2 class="text-center text-kosong">Data Ini Kosong ☹</h2></td>
-                                    </tr>
-                                @endif
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>{{$item->item_name}}</td>
+                                    <td>{{$item->status}}</td>
+                                    <td>{{$item->condition}}</td>
+                                    <td>{{$item->jumlah}}</td>
+                                    <td>{{$item->other_equipment}}</td>
+                                    <td>
+                                        <a href="{{url('/editdatabarang/'.$item->id)}}" class="badge text-bg-warning"><i class="bi bi-pencil"></i></a>
+                                        <form action="" method="post" class="d-inline">
+                                            <button class="badge text-bg-danger border-0" onclick="return swalWithBootstrapButtons()"><i class="bi bi-trash"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
+                        <button class="btn btn-outline-primary mt-5 d-block mx-auto"><a href="{{url('/databarang')}}" class="text-decoration-none text-dark">Kembali</a></button>
                     </div>
                 </div>
             </main>

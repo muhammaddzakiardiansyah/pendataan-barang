@@ -10,5 +10,5 @@ class Items extends Model
     use HasFactory;
 
     protected $table = 'items',
-              $fillable = ['items_name', 'brand', 'condition', 'other_equipment', 'borrowing_id'];
+              $fillable = ['item_name', 'status', 'condition', 'other_equipment', 'jumlah'];
 }

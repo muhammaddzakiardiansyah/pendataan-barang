@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Ramsey\Uuid\Uuid;
 
 return new class extends Migration
 {
@@ -14,10 +15,10 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->string('item_name');
-            $table->string('brand');
+            $table->string('status');
             $table->string('condition');
             $table->string('other_equipment');
-            $table->foreignId('borrowing_id');
+            $table->string('jumlah');
             $table->timestamps();
         });
     }

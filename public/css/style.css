@@ -95,3 +95,36 @@
     margin-left: 7px;
     font-size: 12px;
 }
+
+.btn-search {
+    width: 50%;
+    order: 2;
+}
+
+.btn-add {
+    width: 50%;
+    order: 1;
+}
+
+.form-submit {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    width: 60%;
+    height: auto;
+    padding: 40px;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+.btn-submit {
+    margin-top: 40px;
+}
+
+.text-kosong {
+   margin-top: 15%;
+}
